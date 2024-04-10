@@ -6,13 +6,13 @@ import {
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {Entypo} from "@expo/vector-icons";
     
-export default function Button({label, theme}) {
+export default function Button({label, theme, onPress}) {
     if (theme === "choosePhoto") {
         return (
             <View style={[styles.buttonContainer, {borderWidth: 3, borderColor: "#1E90FF", borderRadius: 18}]}>
                 <Pressable 
                 style={[styles.button, { backgroundColor: "#b3b3b3"}]} 
-                onPress={() => alert('You pressed a button.')}
+                onPress={onPress}
                 >
                     <FontAwesome 
                     name="picture-o"

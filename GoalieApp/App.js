@@ -1,20 +1,45 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    Image,
+ } from 'react-native';
+
+ import { useState } from 'react';
 
 import Button from './components/Button';
 import ImageViewer from './components/ImageViewer';
+import * as ImagePicker from 'expo-image-picker';
 
 // Placeholder image
 const PlaceholderImage = require('./assets/images/climber.jpg');
 
 export default function App() {
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const pickImageAsync = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            //mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            //aspect: [4, 3],
+            quality: 1,
+        });
+        console.log(result);
+        if (!result.canceled) {
+            setSelectedImage(result.assets[0].uri);
+        } else {
+            alert('You did not select an image')
+        }
+        }
+
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <ImageViewer placeholderImageSource={PlaceholderImage} />
+          <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage}/>
         </View>  
         <View style={styles.footerContainer}>
-            <Button theme= "choosePhoto"  label="Change photo" />
+            <Button theme= "choosePhoto"  label="Change photo" onPress={pickImageAsync} />
             <Button theme="continue" label="Continue with this photo" />
         </View>
         <StatusBar style="auto" />

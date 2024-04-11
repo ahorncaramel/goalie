@@ -12,7 +12,7 @@ import ImageViewer from './ImageViewer';
 
 const PlaceholderImage = require('../assets/images/climber.jpg');
 
-export default function ImagePickerComponent() {
+export default function ImagePickerScreen({ navigation }) {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const pickImageAsync = async () => {
@@ -34,8 +34,13 @@ export default function ImagePickerComponent() {
                 <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage}/>
             </View>  
             <View style={styles.footerContainer}>
-                <Button theme= "choosePhoto"  label="Change photo" onPress={pickImageAsync} />
-                <Button theme="continue" label="Continue with this photo" />
+                <Button theme= "choosePhoto"  
+                label="Change photo" 
+                onPress={pickImageAsync} 
+                />
+                <Button theme="continue" 
+                label="Continue with this photo" 
+                onPress={() => navigation.navigate =('HomeScreen' , {selectedImage: selectedImage})}/>
             </View>
         </View>
     );

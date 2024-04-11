@@ -1,22 +1,28 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+const Stack = createNativeStackNavigator();
 
-//components
-// import Button from './components/Button';
-// import ImageViewer from './components/ImageViewer';
-import ImagePicker from './components/ImagePicker';
+import ImagePickerScreen from './components/ImagePickerScreen';
+import HomeScreen from './components/HomeScreen';
 
-
-export default function App() {
+const MyStack = () =>{
     return (
         <NavigationContainer>
-            <ImagePicker />
-            <StatusBar style="auto" />
-        </NavigationContainer>  
+            <Stack.Navigator>
+                <Stack.Screen name="ImagePickerScreen" 
+                component={ImagePickerScreen} 
+                />
+                <Stack.Screen name="HomeScreen"
+                component={HomeScreen}
+                options={{title: 'Home'}}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
-}
+};
 
-
+export default MyStack;
 // Path: GoalieApp/App.js

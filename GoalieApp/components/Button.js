@@ -4,15 +4,15 @@ import {
     Pressable,
     Text } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import {Entypo} from "@expo/vector-icons";
     
-export default function Button({label, theme, onPress}) {
+export default function Button({label, theme, onPress, navigation}) {
+    //this button allows the user to choose a photo from their library
     if (theme === "choosePhoto") {
         return (
             <View style={[styles.buttonContainer, {borderWidth: 3, borderColor: "#1E90FF", borderRadius: 18}]}>
                 <Pressable 
                 style={[styles.button, { backgroundColor: "#b3b3b3"}]} 
-                onPress={onPress}
+                onPress={onPress                                                                                }
                 >
                     <FontAwesome 
                     name="picture-o"
@@ -25,12 +25,13 @@ export default function Button({label, theme, onPress}) {
             </View>
         );
     }
+    //this button continues to the next screen by passing on the selected image
     if (theme === "continue") {
         return (
             <View style={[styles.buttonContainer, {borderWidth: 3, borderColor: "#1E90FF", borderRadius: 18}]}>
                 <Pressable style={[styles.button, { backgroundColor: "#b3b3b3"}]} 
-                onPress={() => alert('You pressed a button.')}
-                >
+                onPress={onPress}
+                    >
                   <FontAwesome
                   name="forward"
                   size={18}

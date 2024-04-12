@@ -5,19 +5,23 @@ import { View,
     StyleSheet,
     Text,
     Pressable,
-    Image } from 'react-native';
+    ImageBackground } from 'react-native';
+//import ImageViewer from './ImageViewer';
 
 export default function HomeScreen({ route }) {
     const { selectedImage } = route.params;
+    console.log(selectedImage);
     return (
-        <View style={styles.container}>
-            <ImageBackground source={{uri: selectedImage}} s
-            tyle={styles.image}
-            blurRadius={5}
-            />
-            <Text style={styles.text}>Welcome to the Home Screen!</Text>
+        <ImageBackground source= {{uri: selectedImage}} 
+        style={styles.overlay}
+        resizeMode ="contain"
+
+        >
+            <View style={StyleSheet.textContainer}>
+                <Text style={styles.text}>Welcome to the Home Screen!</Text>
+            </View>
             <StatusBar style="auto" />
-        </View>
+        </ImageBackground>
     );
 }
 
@@ -26,14 +30,23 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
     },
+    textContainer: {
+        backgroundColor: 'rgba(128,128,128,0.6)',
+        borderRadius: 10,
+        padding: 10,
+        alignSelf: 'center',
+    },
     image: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center'
     },
+    overlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'rgba(0,0,0,0.3)'},
     text: {
         fontSize: 24,
-        color: '#25292e',
+        color: 'white',
         textAlign: 'center',
     }
 });

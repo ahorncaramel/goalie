@@ -14,6 +14,7 @@ const PlaceholderImage = require('../assets/images/climber.jpg');
 
 export default function ImagePickerScreen({ navigation }) {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [imageUri, setImageUri] = useState(null); 
 
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -21,10 +22,15 @@ export default function ImagePickerScreen({ navigation }) {
             quality: 1,
         });
         console.log(result);
-        if (!result.canceled) {
+        if (!result.canceled && result.assets) {
             setSelectedImage(result.assets[0].uri);
+            setImageUri(result.assets[0].uri);
         } else {
-            alert('You did not select an image')
+            alert('You will keep the default image');
+            let placeholderUri = Image.resolveAssetSource(PlaceholderImage).uri;
+            setSelectedImage(placeholderUri);
+            setImageUri(placeholderUri); 
+
         }
     }
 
@@ -40,7 +46,7 @@ export default function ImagePickerScreen({ navigation }) {
                 />
                 <Button theme="continue" 
                 label="Continue with this photo" 
-                onPress={() => navigation.navigate =('HomeScreen' , {selectedImage: selectedImage})}/>
+                onPress={() => navigation.navigate ('HomeScreen' , {selectedImage: selectedImage})}/>
             </View>
         </View>
     );

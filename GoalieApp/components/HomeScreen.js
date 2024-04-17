@@ -6,6 +6,7 @@ import { View,
     Text,
     Pressable,
     ImageBackground } from 'react-native';
+import { styles } from './styles';
 //import ImageViewer from './ImageViewer';
 
 export default function HomeScreen({ route }) {
@@ -25,28 +26,3 @@ export default function HomeScreen({ route }) {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-    },
-    textContainer: {
-        backgroundColor: 'rgba(128,128,128,0.6)',
-        borderRadius: 10,
-        padding: 10,
-        alignSelf: 'center',
-    },
-    image: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center'
-    },
-    overlay: {
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'rgba(0,0,0,0.3)'},
-    text: {
-        fontSize: 24,
-        color: 'white',
-        textAlign: 'center',
-    }
-});

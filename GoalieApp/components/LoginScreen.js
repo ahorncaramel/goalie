@@ -9,10 +9,11 @@ import * as ImagePicker from 'expo-image-picker';
 
 import Button from './Button';
 import ImageViewer from './ImageViewer';
+import { styles } from './styles';
 
 const PlaceholderImage = require('../assets/images/climber.jpg');
 
-export default function ImagePickerScreen({ navigation }) {
+export default function LoginScreen({ navigation }) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUri, setImageUri] = useState(null); 
 
@@ -53,26 +54,3 @@ export default function ImagePickerScreen({ navigation }) {
 }
 
 
-const styles = StyleSheet.create({
-    imageContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 58,
-      },
-      container: {
-        flex: 1,
-        backgroundColor: '#25292e',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      image: {
-        width: 320,
-        height: 440,
-        borderRadius: 18,
-      },
-      footerContainer: {
-          flex: 1 / 3,
-          alignItems: 'center',
-      },
-    });

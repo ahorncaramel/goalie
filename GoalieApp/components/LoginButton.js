@@ -5,7 +5,7 @@ import {
     Text } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
     
-export default function Button({label, theme, onPress, navigation}) {
+export default function LoginButton({label, theme, onPress, navigation}) {
     //this button allows the user to choose a photo from their library
     if (theme === "choosePhoto") {
         return (

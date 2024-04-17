@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-import Button from './Button';
+import LoginButton from './LoginButton';
 import ImageViewer from './ImageViewer';
 import { styles } from './styles';
 
@@ -41,11 +41,11 @@ export default function LoginScreen({ navigation }) {
                 <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage}/>
             </View>  
             <View style={styles.footerContainer}>
-                <Button theme= "choosePhoto"  
+                <LoginButton theme= "choosePhoto"  
                 label="Change photo" 
                 onPress={pickImageAsync} 
                 />
-                <Button theme="continue" 
+                <LoginButton theme="continue" 
                 label="Continue with this photo" 
                 onPress={() => navigation.navigate ('HomeScreen' , {selectedImage: selectedImage})}/>
             </View>

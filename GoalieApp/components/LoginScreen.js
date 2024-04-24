@@ -2,20 +2,21 @@
 
 import React, { useState } from 'react';
 import { 
-    View,
-    StyleSheet    
+    View,    
 } from 'react-native';
+import {Asset} from 'expo-asset';
 import * as ImagePicker from 'expo-image-picker';
 
 import LoginButton from './LoginButton';
 import ImageViewer from './ImageViewer';
 import { styles } from './styles';
 
-const PlaceholderImage = require('../assets/images/climber.jpg');
+
 
 export default function LoginScreen({ navigation }) {
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [imageUri, setImageUri] = useState(null); 
+    const PlaceholderImage = require('../assets/images/climber.jpg');
+    let placeholderUri = Asset.fromModule(PlaceholderImage).uri;
+    const [selectedImage, setSelectedImage] = useState(placeholderUri);
 
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({

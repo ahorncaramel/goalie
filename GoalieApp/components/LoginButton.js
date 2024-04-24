@@ -9,7 +9,7 @@ export default function LoginButton({label, theme, onPress, navigation}) {
     //this button allows the user to choose a photo from their library
     if (theme === "choosePhoto") {
         return (
-            <View style={[styles.buttonContainer, {borderWidth: 3, borderColor: "#1E90FF", borderRadius: 18}]}>
+            <View style={styles.buttonContainer}>
                 <Pressable 
                 style={[styles.button, { backgroundColor: "#b3b3b3"}]} 
                 onPress={onPress                                                                                }

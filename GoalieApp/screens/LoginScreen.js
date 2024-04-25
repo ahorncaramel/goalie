@@ -7,9 +7,9 @@ import {
 import {Asset} from 'expo-asset';
 import * as ImagePicker from 'expo-image-picker';
 
-import LoginButton from './LoginButton';
-import ImageViewer from './ImageViewer';
-import { styles } from './styles';
+import LoginButton from '../components/LoginButton';
+import ImageViewer from '../components/ImageViewer';
+import { styles } from '../components/styles';
 
 
 
@@ -41,14 +41,16 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.imageContainer}>
                 <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage}/>
             </View>  
-            <View style={styles.footerContainer}>
+            <View style={styles.ButtonContainerLogin}>
                 <LoginButton theme= "choosePhoto"  
                 label="Change photo" 
                 onPress={pickImageAsync} 
+                style={[styles.button, styles.footerContainer]}
                 />
                 <LoginButton theme="continue" 
                 label="Continue with this photo" 
-                onPress={() => navigation.navigate ('HomeScreen' , {selectedImage: selectedImage})}/>
+                onPress={() => navigation.navigate ('HomeScreen' , {selectedImage: selectedImage})}
+                styles= {[styles.button, styles.footerContainer]}/>
             </View>
         </View>
     );

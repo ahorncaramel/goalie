@@ -5,8 +5,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-import LoginScreen from './components/LoginScreen';
-import HomeScreen from './components/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import CreateGoal from './screens/CreateGoal';
 
 const MyStack = () =>{
     return (

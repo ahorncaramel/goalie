@@ -1,18 +1,18 @@
 import { 
-    StyleSheet, 
     View,
     Pressable,
     Text } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { styles } from "./styles";
     
 export default function LoginButton({label, theme, onPress, navigation}) {
     //this button allows the user to choose a photo from their library
     if (theme === "choosePhoto") {
         return (
-            <View style={styles.buttonContainer}>
+            <View style={styles.ButtonContainerLogin}>
                 <Pressable 
                 style={[styles.button, { backgroundColor: "#b3b3b3"}]} 
-                onPress={onPress                                                                                }
+                onPress={onPress}
                 >
                     <FontAwesome 
                     name="picture-o"
@@ -28,10 +28,10 @@ export default function LoginButton({label, theme, onPress, navigation}) {
     //this button continues to the next screen by passing on the selected image
     if (theme === "continue") {
         return (
-            <View style={[styles.buttonContainer, {borderWidth: 3, borderColor: "#1E90FF", borderRadius: 18}]}>
+            <View style={styles.ButtonContainerLogin}>
                 <Pressable style={[styles.button, { backgroundColor: "#b3b3b3"}]} 
                 onPress={onPress}
-                    >
+                >
                   <FontAwesome
                   name="forward"
                   size={18}
@@ -45,37 +45,10 @@ export default function LoginButton({label, theme, onPress, navigation}) {
         }
 
     return (
-            <View style={styles.buttonContainer}>
-                <Pressable style={styles.button} onPress={() => alert('You pressed a button.')}>
+            <View style={styles.ButtonContainerLogin}>
+                <Pressable style={styles.ButtonLogin} onPress={() => alert('You pressed a button.')}>
                   <Text style={styles.buttonLabel}>{label}</Text>
                 </Pressable>
               </View>
           );
         }
-        
-
-const styles = StyleSheet.create({
-    buttonContainer: {
-        width: 320,
-        height: 68,  
-        marginHorizontal: 20,
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 3, 
-    },
-    button: {
-        borderRadius: 10,
-        width: "100%",
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "row",
-    }, 
-    buttonIcon: {
-        paddingRight: 8,
-    },
-    buttonLabel: {
-        color: "#fff",
-        fontSize: 17,
-    },
-});
